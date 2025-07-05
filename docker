@@ -1,0 +1,23 @@
+[root@docker ~]# history
+    1  yum install docker* -y
+    2  systemctl start docker
+    3  systemctl enable docker
+    4  docker images ls
+    5  docker pull nginx:stable-perl
+    6  yum install nginx* -y
+    7  systemctl start nginx.service
+    8  systemctl enable nginx.service
+    9  docker images
+   10  docker run -itd --name webapp -p 8080:8080 nginx /bin/bash
+   11  docker ps -a
+   12  docker attach e567bfe69413
+   13  curl http://localhost
+   14  history
+
+[root@docker ~]# docker attach webapp
+root@e567bfe69413:/# history
+    1  apt update -y
+    2  apt install nginx
+    3  service nginx start
+    4  service nginx status
+    5  history
