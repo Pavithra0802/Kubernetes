@@ -50,3 +50,5 @@ vim authorized_keys
 cd /var/www/html
 ll
 cat index.html
+
+balabk260103
