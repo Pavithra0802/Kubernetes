@@ -1,0 +1,52 @@
+Master_node#######################
+yum install ansible*
+ip a s
+vim /etc/hosts
+vim /etc/ssh/sshd_config
+systemctl start sshd
+systemctl enable sshd
+ssh-keygen
+cd /etc/ansible
+vim hosts
+cat > index.html
+vim simple.yaml###
+---
+- name: This is a sample playbook
+  hosts: all
+
+  tasks:
+    - name: Installing Apache
+      yum:
+        name: httpd
+        state: present
+
+    - name: Copy index.html
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+
+    - name: Start and enable httpd
+      systemd:
+        name: httpd
+        state: started
+        enabled: true
+...
+
+ansible-playbook simple.yaml
+
+####workernode######################################33
+
+yum install ansible*
+ip a s
+vim /etc/hosts
+vim /etc/ssh/sshd_config
+systemctl start sshd
+systemctl enable sshd
+hostname
+cd .ssh/
+ll
+cd authorized_keys
+vim authorized_keys
+cd /var/www/html
+ll
+cat index.html
