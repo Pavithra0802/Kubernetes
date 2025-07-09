@@ -80,3 +80,61 @@ worker:
 cd /tmp
 ll
 rpmquery httpd
+
+
+1  ip a s
+    2  vim /etc/hosts
+    3  vim /etc/ssh/sshd_config
+    4  ssh-keygen
+    5  vim /root/.ssh/id_rsa.pub
+    6  yum install ansible* -y
+    7  mkdir -p /etc/ansible
+    8  ll -d /etc/ansible
+    9  cd /etc/ansible
+   10  vim hosts
+   11  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+   12  unzip awscliv2.zip
+
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+aws configure
+
+   13  sudo ./aws/install
+   14  aws configure
+   15  vim creds.yaml
+   19  vim simple.yaml
+**********************************************
+---
+- name: creating ec2 instance
+  hosts: localhost
+  vars_files:
+
+      - creds.yaml
+  tasks:
+        - name: creating Ec2 instance via Ansible
+          amazon.aws.ec2_instance:
+            name: k8s-master
+            instance_type: t2.medium
+            image_id: ami-05ffe3c48a9991133
+            vpc_subnet_id: subnet-0af4a1a1cdc7ce5de
+            security_group: sg-0c4950e8841e59534
+            key_name: lti-mahape
+            region: us-east-1
+            count: 1
+            state: present
+***********************************************
+   20  yum install python* -y
+   21  yum install python* -y --allowerasing --skip-broken
+   22  cd
+   23  hostnamectl set-hostname master.example.com
+   24  bash
+   25  cd /etc/ansible
+   26  ll
+   27  vim simple.yaml
+   28  yum install pip
+   29  pip install botocore
+   30  pip install boto3
+   31  ansible-playbook simple.yaml -C
+   32  ansible-playbook simple.yaml
+   33  history
