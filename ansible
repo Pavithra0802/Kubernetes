@@ -52,3 +52,31 @@ ll
 cat index.html
 
 balabk260103
+
+---
+- name: This is a sample playbook
+  hosts: all
+ 
+  tasks:
+    - name: Installing Apache
+      yum:
+        name: httpd
+        state: present
+ 
+    - name: Copy fstab
+      copy:
+        src: /etc/fstab
+        dest: /tmp/fstab
+ 
+    - name: Start and enable httpd
+      systemd:
+        name: httpd
+        state: started
+        enabled: true
+...
+
+
+worker:
+cd /tmp
+ll
+rpmquery httpd
