@@ -1,0 +1,52 @@
+####MASTER###
+ ip a s
+    2  vim /etc/hosts
+       vim /etc/ssh/sshd_config
+    3  ssh-keygen
+    4  cat /root/.ssh/id_rsa.pub
+    5  yum install ansible* -y
+       mv /etc/fstab /etc/ansible/fstab
+    6  mkdir -p /etc/ansible
+    7  ll -d /etc/ansible
+    8  cd /etc/ansible
+    9  vim hosts
+      
+[dev-server]
+node.example.com
+
+vim simple.yaml
+---
+- name: This is a sample playbook
+  hosts: all
+
+  tasks:
+    - name: Installing Apache
+      yum:
+        name: httpd
+        state: present
+    - name: Copy fstab
+      copy:
+        src: fstab
+        dest: /tmp
+    - name: Start and enable httpd
+      systemd:
+        name: httpd
+        state: started
+        enabled: true
+
+...
+
+ansible-playbook simple.yaml -C
+   48  ansible-playbook simple.yaml
+
+
+
+###########workernode##################
+ip a s
+vim .ssh/authorized_keys
+    8  systemctl start sshd
+    9  systemctl enable sshd
+ 11  yum install httpd
+   12  cd /tmp
+   13  ll
+   14  cd
